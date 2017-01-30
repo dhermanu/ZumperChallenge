@@ -45,9 +45,7 @@ public class Restaurant {
         this.rating = restaurant.optDouble(JSON_RATING);
 
         if(photos != null )
-            this.photoReference = photos
-                    .getJSONObject(0)
-                    .getString(JSON_PHOTO_REFERENCE);
+            this.photoReference = photos.getJSONObject(0).getString(JSON_PHOTO_REFERENCE);
 
 
     }

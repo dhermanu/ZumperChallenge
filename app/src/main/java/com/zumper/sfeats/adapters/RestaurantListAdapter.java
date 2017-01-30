@@ -110,7 +110,7 @@ public class RestaurantListAdapter extends RecyclerView.Adapter<RestaurantListAd
         final String WIDTH_PARAM = "maxwidth";
         final String REFERENCE_PARAM = "photoreference";
         final String KEY_PARAM = "key";
-        final String api_key = "AIzaSyB-bpw0ollWA5AKpT11Y2CL2qPFs4kC_dk";
+        final String api_key = "AIzaSyB-";
 
         Uri builtUri = Uri.parse(BASE_URL).buildUpon()
                 .appendQueryParameter(WIDTH_PARAM, "400")

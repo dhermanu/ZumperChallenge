@@ -170,7 +170,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback,
                 "37.77,-122.41",
                 "restaurant",
                 "distance",
-                "YOUR+API");
+                "AIzaSyB-");
         Log.v("TEST",restaurantList.request().url().toString());
 
 
