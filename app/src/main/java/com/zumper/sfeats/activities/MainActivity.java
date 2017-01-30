@@ -9,6 +9,7 @@ import com.zumper.sfeats.R;
 import com.zumper.sfeats.adapters.ViewPagerAdapter;
 import com.zumper.sfeats.fragments.ListFragment;
 import com.zumper.sfeats.fragments.MapFragment;
+import com.zumper.sfeats.interfaces.GooglePlacesAPI;
 
 public class MainActivity extends AppCompatActivity{
 
@@ -17,6 +18,8 @@ public class MainActivity extends AppCompatActivity{
     private TabLayout tabLayout;
     private ViewPager viewPager;
     private ViewPagerAdapter viewPagerAdapter;
+    private GooglePlacesAPI googlePlacesAPI;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +32,7 @@ public class MainActivity extends AppCompatActivity{
         tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(viewPager);
 
+
     }
 
     private void setupViewPager(ViewPager viewPager) {
@@ -39,6 +43,8 @@ public class MainActivity extends AppCompatActivity{
         viewPagerAdapter.addFragment(new ListFragment(), tabTittleBook);
         viewPager.setAdapter(viewPagerAdapter);
     }
+
+
 
 
 }

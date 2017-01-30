@@ -13,7 +13,7 @@ public interface GooglePlacesAPI {
     @GET("nearbysearch/json")
     Call<ResponseBody> getRestaurantList(@Query("location") String location,
                                          @Query("type") String type,
-                                         @Query("rankBy") String rankBy,
+                                         @Query("rankby") String rankBy,
                                          @Query("key") String key);
 
     @GET("details/json")

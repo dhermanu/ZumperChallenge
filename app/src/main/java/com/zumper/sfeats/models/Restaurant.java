@@ -1,5 +1,9 @@
 package com.zumper.sfeats.models;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 /**
  * Created by dhermanu on 1/29/17.
  */
@@ -7,10 +11,46 @@ package com.zumper.sfeats.models;
 public class Restaurant {
     private String id;
     private String name;
-    private int rating;
+    private double rating;
     private String photoReference;
     private double latitude;
     private double longitude;
+
+    public Restaurant(){
+
+    }
+
+    public Restaurant(JSONObject restaurant) throws JSONException {
+        final String JSON_ID = "place_id";
+        final String JSON_NAME = "name";
+        final String JSON_RATING = "rating";
+        final String JSON_PHOTO = "photos";
+        final String JSON_PHOTO_REFERENCE = "photo_reference";
+        final String JSON_GEOMETRY = "geometry";
+        final String JSON_LOCATION = "location";
+        final String JSON_LATITUDE = "lat";
+        final String JSON_LONGITUDE = "lng";
+
+        JSONArray photos = restaurant
+                .optJSONArray(JSON_PHOTO);
+
+        JSONObject location = restaurant
+                .getJSONObject(JSON_GEOMETRY)
+                .getJSONObject(JSON_LOCATION);
+
+        this.id = restaurant.getString(JSON_ID);
+        this.name = restaurant.getString(JSON_NAME);
+        this.latitude = location.getDouble(JSON_LATITUDE);
+        this.longitude = location.getDouble(JSON_LONGITUDE);
+        this.rating = restaurant.optDouble(JSON_RATING);
+
+        if(photos != null )
+            this.photoReference = photos
+                    .getJSONObject(0)
+                    .getString(JSON_PHOTO_REFERENCE);
+
+
+    }
 
     public String getId() {
         return id;
@@ -28,7 +68,7 @@ public class Restaurant {
         this.name = name;
     }
 
-    public int getRating() {
+    public double getRating() {
         return rating;
     }
 
