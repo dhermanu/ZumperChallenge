@@ -58,103 +58,141 @@
         android:layout_marginBottom="?attr/actionBarSize"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <FrameLayout
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:background="@android:color/white"
+            android:orientation="vertical"
+            android:weightSum="1">
 
-            <LinearLayout
+
+            <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@android:color/white"
-                android:layout_margin="@dimen/linear_detail_margin"
-                android:orientation="vertical"
-                android:weightSum="1">
-
+                android:elevation="@dimen/linear_detail_bio_margin"
+                android:layout_margin="10dp"
+                android:layout_height="wrap_content">
 
                 <LinearLayout
+                    android:layout_margin="10dp"
+                    android:orientation="vertical"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginBottom="@dimen/small_space_margin"
-                    android:orientation="horizontal">
+                    android:layout_height="wrap_content">
 
-                    <ImageView
-                        android:id="@+id/title_icon"
-                        android:layout_width="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_height="match_parent" />
-
-                    <TextView
-                        android:layout_marginLeft="@dimen/text_start_space_margin"
-                        android:layout_marginStart="@dimen/text_start_space_margin"
-                        android:textSize="@dimen/detail_text_size"
-                        android:text="Address"
-                        android:textColor="@color/colorPrimary"
-                        android:id="@+id/formatted_address"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal"
-                    android:layout_marginTop="@dimen/linear_detail_bio_margin"
-                    android:layout_marginBottom="@dimen/linear_detail_bio_margin"
-                    android:layout_marginStart="@dimen/small_space_margin"
-                    android:layout_marginLeft="@dimen/small_space_margin">
-
-                    <ImageView
-                        android:id="@+id/restaurant_number"
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_gravity="center"/>
+                        android:layout_marginBottom="@dimen/small_space_margin"
+                        android:orientation="horizontal">
 
-                    <TextView
-                        android:id="@+id/formatted_phone_number"
-                        android:layout_marginLeft="@dimen/text_bio_start_space_margin"
-                        android:layout_marginStart="@dimen/text_bio_start_space_margin"
-                        android:text="Number"
-                        android:textSize="@dimen/detail_text_size"
-                        android:textColor="@color/colorPrimary"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        <ImageView
+                            android:src="@drawable/ic_location_on_black_24dp"
+                            android:layout_width="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_height="match_parent" />
 
+                        <TextView
+                            android:layout_marginLeft="@dimen/text_start_space_margin"
+                            android:layout_marginStart="@dimen/text_start_space_margin"
+                            android:textSize="@dimen/detail_text_size"
+                            android:textColor="@color/colorPrimary"
+                            android:id="@+id/formatted_address"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="@dimen/linear_detail_bio_margin"
+                        android:layout_marginBottom="@dimen/linear_detail_bio_margin"
+                        android:layout_marginStart="@dimen/small_space_margin"
+                        android:layout_marginLeft="@dimen/small_space_margin">
+
+                        <ImageView
+                            android:src="@drawable/ic_call_black_24dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"/>
+
+                        <TextView
+                            android:id="@+id/formatted_phone_number"
+                            android:layout_marginLeft="@dimen/text_bio_start_space_margin"
+                            android:layout_marginStart="@dimen/text_bio_start_space_margin"
+                            android:textSize="@dimen/detail_text_size"
+                            android:textColor="@color/colorPrimary"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="@dimen/linear_detail_bio_margin"
+                        android:layout_marginBottom="@dimen/linear_detail_bio_margin"
+                        android:layout_marginStart="@dimen/small_space_margin"
+                        android:layout_marginLeft="@dimen/small_space_margin">
+
+                        <ImageView
+                            android:src="@drawable/ic_grade_black_24dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"/>
+
+                        <TextView
+                            android:id="@+id/rating"
+                            android:layout_marginLeft="@dimen/text_bio_start_space_margin"
+                            android:layout_marginStart="@dimen/text_bio_start_space_margin"
+                            android:textSize="@dimen/detail_text_size"
+                            android:textColor="@color/colorPrimary"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                    </LinearLayout>
                 </LinearLayout>
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:layout_margin="10dp"
+                android:elevation="@dimen/linear_detail_bio_margin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
                 <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal"
-                    android:layout_marginTop="@dimen/linear_detail_bio_margin"
-                    android:layout_marginBottom="@dimen/linear_detail_bio_margin"
-                    android:layout_marginStart="@dimen/small_space_margin"
-                    android:layout_marginLeft="@dimen/small_space_margin">
-
-                    <ImageView
-                        android:id="@+id/bio_icon"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_gravity="center"/>
-
-                    <TextView
-                        android:id="@+id/rating"
-                        android:layout_marginLeft="@dimen/text_bio_start_space_margin"
-                        android:layout_marginStart="@dimen/text_bio_start_space_margin"
-                        android:textSize="@dimen/detail_text_size"
-                        android:textColor="@color/colorPrimary"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-
-                </LinearLayout>
-                <android.support.v7.widget.RecyclerView
+                    android:layout_margin="@dimen/linear_detail_bio_margin"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/recycler_review_list">
-                </android.support.v7.widget.RecyclerView>
-            </LinearLayout>
+                    android:orientation="vertical">
 
-        </FrameLayout>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/review_title"
+                        android:layout_marginLeft="@dimen/linear_detail_bio_margin"
+                        android:layout_marginStart="@dimen/linear_detail_bio_margin"
+                        android:textSize="@dimen/detail_text_size"
+                        android:textColor="@color/colorPrimary"/>
+
+                    <View
+                        android:layout_margin="@dimen/linear_detail_bio_margin"
+                        android:background="@android:color/darker_gray"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/line_height_view"/>
+
+                    <android.support.v7.widget.RecyclerView
+                        android:layout_margin="@dimen/linear_detail_bio_margin"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/recycler_review_list">
+                    </android.support.v7.widget.RecyclerView>
+
+                </LinearLayout>
+            </android.support.v7.widget.CardView>
+
+        </LinearLayout>
 
     </android.support.v4.widget.NestedScrollView>
 

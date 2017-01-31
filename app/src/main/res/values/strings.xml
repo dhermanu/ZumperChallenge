@@ -2,4 +2,7 @@
     <string name="app_name">SFEats</string>
     <string name="title_activity_main">Main</string>
     <string name="title_activity_detail">DetailActivity</string>
+
+    <string name="review_title">Reviews</string>
+
 </resources>

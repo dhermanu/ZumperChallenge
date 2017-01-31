@@ -15,11 +15,11 @@ import java.util.List;
  * Created by dhermanu on 1/30/17.
  */
 
-class MyInfoWindowAdapter implements GoogleMap.InfoWindowAdapter {
+public class MyInfoWindowAdapter implements GoogleMap.InfoWindowAdapter {
 
     private final View myContentsView;
 
-    MyInfoWindowAdapter(Activity myActivity) {
+    public MyInfoWindowAdapter(Activity myActivity) {
         this.myContentsView = myActivity.getLayoutInflater().inflate(R.layout.marker_window, null);
 
     }
@@ -38,8 +38,10 @@ class MyInfoWindowAdapter implements GoogleMap.InfoWindowAdapter {
         List<String> items = Arrays.asList(data.split("\\s*,\\s*"));
 
         restaurantName.setText(items.get(0));
-        if(items.get(1) != "NaN")
-            restaurantRating.setText(items.get(1));
+        if(!items.get(1).equals("NaN")){
+            final String rating = "Rating: " + items.get(1);
+            restaurantRating.setText(rating);
+        }
 
 
         return myContentsView;

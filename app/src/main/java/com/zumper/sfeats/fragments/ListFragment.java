@@ -4,21 +4,20 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.zumper.sfeats.BuildConfig;
 import com.zumper.sfeats.R;
+import com.zumper.sfeats.Utils;
 import com.zumper.sfeats.adapters.RestaurantListAdapter;
 import com.zumper.sfeats.interfaces.GooglePlacesAPI;
 import com.zumper.sfeats.models.Restaurant;
 
-import org.json.JSONArray;
 import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -55,6 +54,11 @@ public class ListFragment extends Fragment {
 
     public void updateList(){
         final String BASE_URL = "https://maps.googleapis.com/maps/api/place/";
+        final String COORD_PARAM = "37.77,-122.41";
+        final String TYPE_PARAM = "restaurant";
+        final String DISTANCE_PARAM = "distance";
+
+
         Gson gson =  new GsonBuilder().create();
         Retrofit retrofit = new Retrofit.Builder().baseUrl(BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create(gson))
@@ -62,18 +66,18 @@ public class ListFragment extends Fragment {
 
         googlePlacesAPI = retrofit.create(GooglePlacesAPI.class);
         Call<ResponseBody> restaurantList = googlePlacesAPI.getRestaurantList(
-                "37.77,-122.41",
-                "restaurant",
-                "distance",
-                "AIzaSyB-");
-        Log.v("TEST",restaurantList.request().url().toString());
-
+                COORD_PARAM,
+                TYPE_PARAM,
+                DISTANCE_PARAM,
+                BuildConfig.PLACES_API_KEY);
 
         restaurantList.enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 try {
-                    ArrayList<Restaurant> restaurants = getParseJson(response.body().string());
+                    ArrayList<Restaurant> restaurants = Utils
+                            .getParsedRestaurant(response.body().string());
+
                     restaurantListAdapter = new RestaurantListAdapter(restaurants, getContext());
                     recyclerViewRestaurants.setAdapter(restaurantListAdapter);
 
@@ -89,19 +93,5 @@ public class ListFragment extends Fragment {
 
             }
         });
-    }
-
-    public ArrayList<Restaurant> getParseJson(String jsonString) throws JSONException{
-        JSONObject responseObject  = new JSONObject(jsonString);
-        JSONArray restaurantList = responseObject.getJSONArray("results");
-
-        ArrayList<Restaurant> restaurants = new ArrayList<>();
-        for(int i = 0; i <restaurantList.length();i++){
-            JSONObject getRestaurant = restaurantList.getJSONObject(i);
-
-            Restaurant restaurant = new Restaurant(getRestaurant);
-            restaurants.add(restaurant);
-        }
-        return restaurants;
     }
 }

@@ -16,8 +16,12 @@
     <dimen name="text_start_space_margin">10dp</dimen>
     <dimen name="text_bio_start_space_margin">12dp</dimen>
     <dimen name="text_bio_desc_margin">40dp</dimen>
+    <dimen name="line_height_view">1dp</dimen>
+
 
     <dimen name="detail_text_size">20sp</dimen>
+    <dimen name="list_text_size">24sp</dimen>
+    <dimen name="review_text_size">16sp</dimen>
     <dimen name="bio_desc_text_size">17sp</dimen>
 
 </resources>
